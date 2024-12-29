@@ -1,0 +1,106 @@
+/* Footer Styles */
+footer#Footer {
+  background-color: #042b2d;
+  color: #ffffff;
+  padding: 40px 20px;
+  font-family: "Roboto", sans-serif;
+}
+
+#Upper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #ffffff;
+}
+
+#Upper section {
+  flex: 1;
+  padding: 0 15px;
+}
+
+#Upper img {
+  width: 150px;
+  margin-bottom: 20px;
+}
+
+#Upper h2 {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #ff6d34;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+#Upper ul {
+  list-style: none;
+  padding: 0;
+}
+
+#Upper ul li {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+#Upper ul li p,
+#Upper ul li {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.highlight {
+  color: #ff6d34;
+  font-weight: bold;
+}
+
+#lower {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  margin-top: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.Lower-Container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.Lower-Container img {
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+}
+
+.Lower-Container input[type="text"] {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  flex: 1;
+  max-width: 250px;
+  font-size: 14px;
+}
+
+.Lower-Container button {
+  background-color: #ff6d34;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.Lower-Container button:hover {
+  background-color: #e65b29;
+}
