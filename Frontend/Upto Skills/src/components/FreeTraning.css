@@ -1,0 +1,44 @@
+.gridContainer{
+    max-width: 100%;
+    margin: auto;
+    font-family: Arial, sans-serif;
+    padding:5%;
+    background-color:#cdcdcd ;
+   
+    min-height: 450px ;
+   
+}
+
+  
+.item1{
+    width: 45%;
+    padding : 20px;
+    
+    float: left;
+    margin-left: 40px;;
+    margin-bottom: 30px;;
+    box-shadow: 2px 2px 5px 0px #cdcdcd;
+    border-radius: 7px;
+    
+    text-align: left;  
+}
+        
+.subitem1-1{
+    
+    width: 15%;
+    padding : 5px;
+    background-color: #fff ;
+    float: left;
+    border-radius: 5px;
+}
+
+.subitem1-2{
+  
+    width: 80%;
+    
+    text-align: top;
+    float: right;
+}
+
+
+
