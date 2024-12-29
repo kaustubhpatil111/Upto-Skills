@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./NavigationBar.css";
 
 const NavigationBar = () => {
@@ -25,7 +26,9 @@ const NavigationBar = () => {
         <div className="action-buttons">
           <button className="green-btn">Get a Job</button>
           <button className="orange-btn">Post a Job</button>
-          <button className="login-btn">Login</button>
+          <Link to="/login">
+            <button className="login-btn">Login</button>
+          </Link>
         </div>
       </div>
 
@@ -35,13 +38,13 @@ const NavigationBar = () => {
           <img src="/UptoSkills.png" alt="UptoSkills Logo" />
         </div>
         <nav className="nav-links">
-          <a href="#" className="active">
+          <Link to="/courses" className="active">
             Courses
-          </a>
-          <a href="#">Jobs</a>
-          <a href="#">Shops</a>
-          <a href="#">Discover</a>
-          <a href="#">Degree Program</a>
+          </Link>
+          <Link to="/jobs">Jobs</Link>
+          <Link to="/shops">Shops</Link>
+          <Link to="/discover">Discover</Link>
+          <Link to="/degree-program">Degree Program</Link>
         </nav>
         <div className="action-buttons">
           <button className="green-btn">For Colleges</button>
