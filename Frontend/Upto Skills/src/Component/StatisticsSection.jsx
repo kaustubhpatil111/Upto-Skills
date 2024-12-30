@@ -5,13 +5,13 @@ const StatisticsSection = () => {
   return (
     <section className="statistics-section">
       {/* Gradient background */}
+
       <div className="background-layer"></div>
 
       {/* Map image */}
       <div className="map-layer">
         <img src="/world-map.png" alt="World Map" className="map-image" />
       </div>
-
       {/* Stats overlay */}
       <div className="stats-container">
         <div className="stat-item">

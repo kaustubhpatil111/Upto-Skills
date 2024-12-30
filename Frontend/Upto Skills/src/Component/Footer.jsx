@@ -4,7 +4,6 @@ function Footer() {
   return (
     <footer id="Footer">
       <div id="Upper" className="container">
-        {/* Contact Information */}
         <section id="contact-info">
           <img src="./UptoSkills.png" alt="UptoSkills logo" />
           <ul>
@@ -27,19 +26,25 @@ function Footer() {
           </ul>
         </section>
 
-        {/* Links */}
         <section id="links">
           <h2>Links</h2>
           <ul>
-            <li>Home</li>
-            <li>About Us</li>
-            <li>Services</li>
-            <li>Contact Us</li>
+            <li>
+              <a href="#">Home</a>
+            </li>
+            <li>
+              <a href="#">About Us</a>
+            </li>
+            <li>
+              <a href="#">Services</a>
+            </li>
+            <li>
+              <a href="#">Contact Us</a>
+            </li>
           </ul>
         </section>
 
-        {/* Services */}
-        <section id="Services">
+        <section id="services">
           <h2>Services</h2>
           <ul>
             <li>Lorem ipsum dolor sit amet</li>
@@ -49,8 +54,7 @@ function Footer() {
           </ul>
         </section>
 
-        {/* Courses */}
-        <section id="Courses">
+        <section id="courses">
           <h2>Courses</h2>
           <ul>
             <li>AI & Machine Learning Courses</li>
@@ -60,8 +64,7 @@ function Footer() {
           </ul>
         </section>
 
-        {/* Subscribe Us */}
-        <section id="Subscribe-us">
+        <section id="subscribe-us">
           <h2>Subscribe Us</h2>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
         </section>

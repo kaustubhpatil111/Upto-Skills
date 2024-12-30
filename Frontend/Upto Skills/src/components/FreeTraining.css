@@ -1,44 +1,104 @@
-.gridContainer{
-    max-width: 100%;
-    margin: auto;
-    font-family: Arial, sans-serif;
-    padding:5%;
-    background-color:#cdcdcd ;
-   
-    min-height: 450px ;
-   
+.container {
+  background-color: #f8f8f8;
+  padding: 50px;
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two cards per row */
+  gap: 20px; /* Space between cards */
+  /* padding: 20px; */
+  list-style: none;
 }
 
-  
-.item1{
-    width: 45%;
-    padding : 20px;
-    
-    float: left;
-    margin-left: 40px;;
-    margin-bottom: 30px;;
-    box-shadow: 2px 2px 5px 0px #cdcdcd;
-    border-radius: 7px;
-    
-    text-align: left;  
-}
-        
-.subitem1-1{
-    
-    width: 15%;
-    padding : 5px;
-    background-color: #fff ;
-    float: left;
-    border-radius: 5px;
+.card {
+  display: flex;
+  width: 75%;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.subitem1-2{
-  
-    width: 80%;
-    
-    text-align: top;
-    float: right;
+.card:hover {
+  transform: translateY(-5px); /* Slight hover effect */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Stronger shadow */
 }
 
+.card__icon {
+  width: 60px;
+  height: 60px;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.05); /* Light background */
+  border-radius: 15%;
+}
 
+.card__icon img {
+  width: 60%;
+  height: auto;
+}
+
+.card__title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #495057;
+  margin: 10px 0;
+}
+
+.card__description {
+  font-size: 0.9rem;
+  color: #495057;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Background colors for cards */
+.cards li:nth-child(1) {
+  background-color: #e1fffb; /* Light blue */
+}
+
+.cards li:nth-child(2) {
+  background-color: #1a1a25; /* Dark card */
+  color: #fff;
+}
+
+.cards li:nth-child(3) {
+  background-color: #fcf8e1; /* Light yellow */
+}
+
+.cards li:nth-child(4) {
+  background-color: #ffffff; /* Neutral light */
+}
+.cards li:nth-child(2) .card__title,
+.cards li:nth-child(2) .card__description {
+  color: #fff; /* Override color to white */
+}
+
+.icon_background {
+  margin: 20px;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 15%;
+  box-shadow: 0 0 10px rgba(0, 0, 255, 0.3);
+  transition: transform 0.3s ease-in-out;
+}
+.Info_div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  /* how to make text alighed to left side ?*/
+}
+.card__icon:hover {
+  background-color: rgba(0, 0, 0, 0.1); /* Slightly darker on hover */
+  box-shadow: 0 0 15px rgba(0, 0, 255, 0.6); /* Add glow effect */
+}
+.icon_background:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}

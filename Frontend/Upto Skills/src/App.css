@@ -1,0 +1,7 @@
+body {
+  font-family: "Poppins", sans-serif;
+  --secondary-accent: #042b2d;
+  --background-light: #f2fff9;
+  background-color: var(--background-light);
+  color: var(--secondary-accent);
+}

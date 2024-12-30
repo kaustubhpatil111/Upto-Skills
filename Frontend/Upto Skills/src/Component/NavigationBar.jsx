@@ -1,60 +1,82 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import "./NavigationBar.css";
 
 const NavigationBar = () => {
-  return (
-    <header>
-      <div className="top-bar">
-        <div className="top-bar-icons">
-          <a href="https://linkedin.com" target="_blank" rel="noreferrer">
-            <img src="/Linkedin.png" alt="LinkedIn" />
-          </a>
-          <a href="https://instagram.com" target="_blank" rel="noreferrer">
-            <img src="/Instagram.png" alt="Instagram" />
-          </a>
-          <a href="https://facebook.com" target="_blank" rel="noreferrer">
-            <img src="/Facebook.png" alt="Facebook" />
-          </a>
-          <a href="https://youtube.com" target="_blank" rel="noreferrer">
-            <img src="/Youtube.png" alt="YouTube" />
-          </a>
-          <a href="https://telegram.org" target="_blank" rel="noreferrer">
-            <img src="/Telegram.png" alt="Telegram" />
-          </a>
-        </div>
-        <div className="action-buttons">
-          <button className="green-btn">Get a Job</button>
-          <button className="orange-btn">Post a Job</button>
-          <Link to="/login">
-            <button className="login-btn">Login</button>
-          </Link>
-        </div>
-      </div>
+  const [activeDropdown, setActiveDropdown] = useState(null);
+  const location = useLocation();
 
-      {/* Main Navigation Bar */}
+  const handleMouseEnter = (index) => setActiveDropdown(index);
+  const handleMouseLeave = () => setActiveDropdown(null);
+
+  const isActive = (path) => location.pathname === path;
+
+  const navItems = [
+    {
+      title: "Courses",
+      description: "Explore top-notch courses.",
+      path: "/courses",
+    },
+    {
+      title: "Jobs",
+      description: "Find the best job opportunities.",
+      path: "/jobs",
+    },
+    {
+      title: "Shops",
+      description: "Shop exclusive resources.",
+      path: "/shops",
+    },
+    {
+      title: "Discover",
+      description: "Stay updated with trends.",
+      path: "/discover",
+    },
+    {
+      title: "Degree Program",
+      description: "Advance with degrees.",
+      path: "/degree-program",
+    },
+  ];
+
+  return (
+    <header className="premium-header">
       <div className="main-nav">
         <div className="logo">
           <img src="/UptoSkills.png" alt="UptoSkills Logo" />
         </div>
         <nav className="nav-links">
-          <Link to="/courses" className="active">
-            Courses
-          </Link>
-          <Link to="/jobs">Jobs</Link>
-          <Link to="/shops">Shops</Link>
-          <Link to="/discover">Discover</Link>
-          <Link to="/degree-program">Degree Program</Link>
+          {navItems.map((item, index) => (
+            <div
+              key={index}
+              className={`nav-item ${isActive(item.path) ? "active" : ""}`}
+              onMouseEnter={() => handleMouseEnter(index)}
+              onMouseLeave={handleMouseLeave}
+            >
+              <Link to={item.path} className="nav-link">
+                {item.title}
+                <span className="dropdown-arrow"></span>
+              </Link>
+              {activeDropdown === index && (
+                <div className="card-dropdown">
+                  <div className="card">
+                    <h3>{item.title}</h3>
+                    <p>{item.description}</p>
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
         </nav>
         <div className="action-buttons">
-          <button className="green-btn">For Colleges</button>
-          <button className="orange-btn-transperant">Need Help?</button>
+          <button className="corporate-btn">Candidate</button>
+          <button className="corporate-btn">For Corporate</button>
+          <Link to="/login" className="login-btn">
+            Login
+          </Link>
         </div>
         <div className="icons">
-          <button>
-            <img src="/Cart.png" alt="Cart" />
-          </button>
-          <button>
+          <button className="search-btn">
             <img src="/search.png" alt="Search" />
           </button>
         </div>
