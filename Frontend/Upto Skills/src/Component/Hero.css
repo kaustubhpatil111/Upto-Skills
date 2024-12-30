@@ -3,7 +3,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 90px;
+  padding-top: 40px;
+  padding-left: 90px;
+  padding-bottom: 90px;
   background-color: rgba(242, 255, 249, 1);
   font-family: Arial, sans-serif;
 }

@@ -4,4 +4,5 @@ body {
   --background-light: #f2fff9;
   background-color: var(--background-light);
   color: var(--secondary-accent);
+  margin: 0;
 }

@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./NavigationBar.css";
 
-const NavigationBar = () => {
+const NavigationBar = ({ openLoginModal }) => {
+  // Accept the openLoginModal function
   const [activeDropdown, setActiveDropdown] = useState(null);
   const location = useLocation();
 
@@ -71,9 +72,10 @@ const NavigationBar = () => {
         <div className="action-buttons">
           <button className="corporate-btn">Candidate</button>
           <button className="corporate-btn">For Corporate</button>
-          <Link to="/login" className="login-btn">
+          {/* This button now opens the modal instead of navigating to the login page */}
+          <button className="login-btn" onClick={openLoginModal}>
             Login
-          </Link>
+          </button>
         </div>
         <div className="icons">
           <button className="search-btn">
