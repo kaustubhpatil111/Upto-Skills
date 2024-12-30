@@ -6,11 +6,17 @@ import "./App.css";
 import Footer from "./Component/Footer";
 import ExploreJobs from "./Component/Explore-Jobs";
 import StatisticsSection from "./Component/StatisticsSection";
+<<<<<<< Updated upstream
 import FreeTraining from "./components/FreeTraining";
 import Hero from "./Component/Hero";
 import NavigationBar from "./Component/NavigationBar";
 import Login from "./Component/Login";
 import Register from "./Component/Register";
+=======
+import Freetraining from "./components/FreeTraning";
+import Explore from "./components/Explore";
+
+>>>>>>> Stashed changes
 
 function App() {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false); // Modal state
@@ -19,6 +25,7 @@ function App() {
   const closeLoginModal = () => setIsLoginModalOpen(false); // Closes modal
 
   return (
+<<<<<<< Updated upstream
     <Router>
       <NavigationBar openLoginModal={openLoginModal} />{" "}
       {/* Pass function as prop */}
@@ -46,6 +53,11 @@ function App() {
       </Modal>
       <Hero />
       <FreeTraining />
+=======
+    <>
+     <Freetraining />
+     <Explore />
+>>>>>>> Stashed changes
       <StatisticsSection />
       <ExploreJobs />
       <Footer />
