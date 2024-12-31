@@ -62,7 +62,7 @@ const FreeTraning = () => {
   borderTop: '10px solid transparent', // You need to define a border for the image to apply
 }}></div>
 
-    <div className="gridContainer wave-border">
+    <div className="gridContainer">
      
       {freetrainingData.map((item, index) => (
         

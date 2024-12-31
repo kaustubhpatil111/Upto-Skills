@@ -82,18 +82,24 @@ const Explore = () => {
         </div>
 
         {/* Grid for displaying items */}
-        <div className="gridContainer1 ">
-          {freetrainingData.map((item, index) => (
-            <div className="item2" key={index} style={{float:item.float}}>
-              <div className="subitem2-1">
+        <div className="gridContainer1 "  >
+        {freetrainingData.map((item, index) => (
+           <>
+           
+              <div
+                className={`item2 ${index % 2 === 0 ? 'right' : 'left'}`}
+                key={index}
+              >
+                <div className="subitem2-1">
                 <img src={item.icon} width={"50px"} alt="icon" />
               </div>
               <div className="subitem2-2">
                 <h2>{item.headings}</h2>
                 <p>{item.description}</p>
               </div>
-            </div>
+            </div></>
           ))}
+         <div style={{clear:"both"}}></div>
         </div>
         
       </div>
