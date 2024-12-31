@@ -1,0 +1,80 @@
+.boxContainer {
+  text-align: center;
+  padding: 50px;
+  margin: auto;
+  display: flex;
+}
+
+.imageContainer {
+  padding: 20px;
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the content */
+}
+
+.gridContainer1 {
+  width: 60%;
+  margin: auto;
+  font-family: Arial, sans-serif;
+  padding: 5%;
+  background-color: #cdcdcd;
+ 
+  flex-wrap: wrap; /* Allows wrapping of the items */
+  justify-content: center; /* Centers the items horizontally */
+  gap: 20px;
+}
+
+.item2 {
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 7px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: left;
+  gap: 2px;
+  width: 100%; /* Adjust width to take up full width of container */
+  max-width: 70%; /* Control the max width */
+  margin-bottom: 20px;
+  
+}
+
+.left {
+  justify-content: flex-start; /* Align to the left */
+  float: left;
+}
+
+.right {
+  justify-content: flex-end; /* Align to the right */
+  float: right;
+}
+
+/* Subitem 1 (Icon section) */
+.subitem2-1 {
+  flex: 0 0 95px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Subitem 2 (Text content) */
+.subitem2-2 {
+  flex: 1;
+}
+
+.subitem2-2 h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.subitem2-2 p {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.wave-border {
+  border-image: url('path_to_wave_line_image') 30 repeat;
+  border-top: 10px solid transparent;
+}

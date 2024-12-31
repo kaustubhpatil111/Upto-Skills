@@ -6,6 +6,7 @@ import "./App.css";
 import Footer from "./Component/Footer";
 import ExploreJobs from "./Component/Explore-Jobs";
 import StatisticsSection from "./Component/StatisticsSection";
+
 import FreeTraining from "./components/FreeTraining";
 import Hero from "./Component/Hero";
 import NavigationBar from "./Component/NavigationBar";
@@ -14,6 +15,10 @@ import Partners from "./Component/Partners";
 // Lazy-loaded components
 const Login = lazy(() => import("./Component/Login"));
 const Register = lazy(() => import("./Component/Register"));
+
+import Freetraining from "./components/FreeTraning";
+import Explore from "./components/Explore";
+
 
 function App() {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
@@ -92,6 +97,7 @@ function App() {
       {/* Footer and other sections */}
       <Partners />
       <FreeTraining />
+      <Explore />
       <StatisticsSection />
       <ExploreJobs />
       <Footer />

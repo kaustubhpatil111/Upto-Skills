@@ -1,0 +1,58 @@
+/* Grid Container */
+.gridContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Automatic responsive columns */
+    gap: 20px; /* Space between items */
+    max-width: 100%;
+    margin: auto;
+    font-family: Arial, sans-serif;
+    padding: 5%;
+    background-color: #cdcdcd;
+    min-height: 450px;
+  }
+  
+  /* Item Styles */
+  .item1 {
+    background-color: #fff; /* Ensures background color for items */
+    padding: 20px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for item */
+    border-radius: 7px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    justify-content: flex-start; /* Ensures proper alignment */
+    gap: 20px; /* Adds gap between image and text */
+  }
+  
+  /* Subitem 1 (Icon section) */
+  .subitem1-1 {
+    flex: 0 0 95px; /* Keeps the icon at 95px width */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Subitem 2 (Text content) */
+  .subitem1-2 {
+    flex: 1;
+  }
+  
+  /* Ensure h2 and p are styled correctly */
+  .subitem1-2 h2 {
+    margin: 0;
+    font-size: 20px;
+  }
+  
+  .subitem1-2 p {
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  
+  /* Optional: Add the wave-border styling if needed */
+  .wave-border {
+    border-image: url('path_to_wave_line_image') 30 repeat;
+    border-top: 10px solid transparent;
+  }
+  
+  
