@@ -6,3 +6,39 @@ body {
   color: var(--secondary-accent);
   margin: 0;
 }
+
+body.modal-open {
+  overflow: hidden;
+}
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #333; /* Dark background for a more modern look */
+  border: none; /* Remove border for a cleaner look */
+  border-radius: 50%;
+  width: 30px; /* Adjust size */
+  height: 30px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff; /* White color for the 'X' */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1001;
+  transition: background 0.3s ease, transform 0.3s ease-in-out;
+}
+
+.close-button:hover {
+  background: #f44336; /* Red background on hover for emphasis */
+  transform: scale(1.1);
+}
+
+.close-button:focus {
+  outline: none; /* Remove the outline when focused */
+}
+
+.close-button::before {
+  font-size: 22px; /* Adjust the 'X' size */
+}

@@ -1,0 +1,131 @@
+/* Jobs Content Container */
+.jobs-content {
+  display: flex;
+  flex-direction: row;
+  padding: 15px;
+  background-color: #f2fff9; /* Light background color */
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* List Items */
+li {
+  width: 200px;
+}
+
+/* Section 1 */
+.section1 {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  padding: 0;
+}
+
+/* Learn Section */
+.learn-section {
+  background: #f2fff9; /* Matches primary light background */
+  padding: 25px;
+  border-radius: 8px;
+}
+
+/* Section Title */
+.section-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: #ff6d34; /* Primary accent color */
+  margin-bottom: 20px;
+}
+
+/* Section List */
+.section-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Section Links */
+.section-link {
+  display: block;
+  font-size: 14px;
+  font-weight: 400;
+  color: #ff6d34; /* Accent color for links */
+  text-decoration: none;
+  margin-bottom: 8px;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.section-link:hover {
+  color: #ff6d34; /* Keeps hover consistent with primary accent */
+  text-decoration: underline;
+}
+
+/* Section Description */
+.section-description {
+  font-size: 14px;
+  color: #666; /* Neutral description text */
+  margin-top: 8px;
+}
+
+/* Section 2 */
+.section2 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+/* Featured Reads Section */
+.featured-reads-section {
+  background: #ffffff; /* Neutral background for better readability */
+  padding: 25px;
+  width: 300px;
+  border-radius: 10px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Reads Item */
+.reads-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 20px;
+  background: #f2fff9;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); /* Lighter shadow for a clean look */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.reads-item:hover {
+  transform: translateY(-5px); /* Subtle lift on hover */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Reads Image */
+.reads-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds depth to the image */
+}
+
+/* Reads Title */
+.reads-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ff6d34; /* Primary accent for titles */
+  margin-bottom: 10px;
+}
+
+/* Reads Link */
+.reads-link {
+  font-size: 14px;
+  color: #017cad; /* Complementary color for links */
+  text-decoration: none;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.reads-link:hover {
+  color: #ff9100; /* Matches hover accent with primary palette */
+  text-decoration: underline;
+}

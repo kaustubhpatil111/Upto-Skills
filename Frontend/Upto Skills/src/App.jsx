@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, Suspense, lazy } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Modal from "react-modal"; // Import Modal
+import Modal from "react-modal";
 
 import "./App.css";
 import Footer from "./Component/Footer";
@@ -9,42 +9,88 @@ import StatisticsSection from "./Component/StatisticsSection";
 import FreeTraining from "./components/FreeTraining";
 import Hero from "./Component/Hero";
 import NavigationBar from "./Component/NavigationBar";
-import Login from "./Component/Login";
-import Register from "./Component/Register";
+import Partners from "./Component/Partners";
+
+// Lazy-loaded components
+const Login = lazy(() => import("./Component/Login"));
+const Register = lazy(() => import("./Component/Register"));
 
 function App() {
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false); // Modal state
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
-  const openLoginModal = () => setIsLoginModalOpen(true); // Opens modal
-  const closeLoginModal = () => setIsLoginModalOpen(false); // Closes modal
+  // Manage body scroll when modal is open
+  useEffect(() => {
+    if (isLoginModalOpen) {
+      document.body.classList.add("modal-open");
+    } else {
+      document.body.classList.remove("modal-open");
+    }
+    return () => document.body.classList.remove("modal-open"); // Cleanup on unmount
+  }, [isLoginModalOpen]);
+
+  // Modal control functions
+  const openLoginModal = () => setIsLoginModalOpen(true);
+  const closeLoginModal = () => setIsLoginModalOpen(false);
 
   return (
     <Router>
       <NavigationBar openLoginModal={openLoginModal} />{" "}
-      {/* Pass function as prop */}
-      <Routes>
-        <Route path="/" element={<div></div>} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/courses" element={<div></div>} />
-        <Route path="/jobs" element={<div></div>} />
-        <Route path="/shops" element={<div></div>} />
-        <Route path="/discover" element={<div></div>} />
-        <Route
-          path="/degree-program"
-          element={<div>Degree Program Page</div>}
-        />
-      </Routes>
+      {/* Pass openModal function */}
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route path="/" element={<Hero />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/courses" element={<div>Courses Page</div>} />
+          <Route path="/jobs" element={<ExploreJobs />} />
+          <Route path="/shops" element={<div>Shops Page</div>} />
+          <Route path="/discover" element={<StatisticsSection />} />
+          <Route
+            path="/degree-program"
+            element={<div>Degree Program Page</div>}
+          />
+        </Routes>
+      </Suspense>
       {/* Modal for Login */}
       <Modal
-        isOpen={isLoginModalOpen} // Modal visibility controlled by state
-        onRequestClose={closeLoginModal} // Close modal on request
+        isOpen={isLoginModalOpen}
+        onRequestClose={closeLoginModal}
         contentLabel="Login Modal"
-        ariaHideApp={false} // Prevent issues with accessibility
+        ariaHideApp={false}
+        style={{
+          overlay: {
+            backgroundColor: "rgba(0,0,0,0.8)",
+            zIndex: 1000,
+          },
+          content: {
+            top: "0",
+            left: "0",
+            right: "0",
+            bottom: "0",
+            border: "none",
+            borderRadius: "0",
+            padding: "0",
+            margin: "0",
+            overflow: "hidden",
+          },
+        }}
       >
-        <Login />
-        <button onClick={closeLoginModal}>Close</button> {/* Close button */}
+        <div className="full-screen-login">
+          <button
+            className="close-button"
+            onClick={closeLoginModal}
+            aria-label="Close"
+          >
+            &times;
+          </button>
+          <div className="login-content">
+            <Suspense fallback={<div>Loading Login...</div>}>
+              <Login />
+            </Suspense>
+          </div>
+        </div>
       </Modal>
-      <Hero />
+      {/* Footer and other sections */}
+      <Partners />
       <FreeTraining />
       <StatisticsSection />
       <ExploreJobs />

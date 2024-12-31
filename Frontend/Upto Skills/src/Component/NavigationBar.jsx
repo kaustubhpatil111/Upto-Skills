@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./NavigationBar.css";
+import JobsContent from "./Jobs-Content";
 
 const NavigationBar = ({ openLoginModal }) => {
   // Accept the openLoginModal function
@@ -12,34 +13,6 @@ const NavigationBar = ({ openLoginModal }) => {
 
   const isActive = (path) => location.pathname === path;
 
-  const navItems = [
-    {
-      title: "Courses",
-      description: "Explore top-notch courses.",
-      path: "/courses",
-    },
-    {
-      title: "Jobs",
-      description: "Find the best job opportunities.",
-      path: "/jobs",
-    },
-    {
-      title: "Shops",
-      description: "Shop exclusive resources.",
-      path: "/shops",
-    },
-    {
-      title: "Discover",
-      description: "Stay updated with trends.",
-      path: "/discover",
-    },
-    {
-      title: "Degree Program",
-      description: "Advance with degrees.",
-      path: "/degree-program",
-    },
-  ];
-
   return (
     <header className="premium-header">
       <div className="main-nav">
@@ -47,31 +20,83 @@ const NavigationBar = ({ openLoginModal }) => {
           <img src="/UptoSkills.png" alt="UptoSkills Logo" />
         </div>
         <nav className="nav-links">
-          {navItems.map((item, index) => (
-            <div
-              key={index}
-              className={`nav-item ${isActive(item.path) ? "active" : ""}`}
-              onMouseEnter={() => handleMouseEnter(index)}
-              onMouseLeave={handleMouseLeave}
-            >
-              <Link to={item.path} className="nav-link">
-                {item.title}
-                <span className="dropdown-arrow"></span>
-              </Link>
-              {activeDropdown === index && (
-                <div className="card-dropdown">
-                  <div className="card">
-                    <h3>{item.title}</h3>
-                    <p>{item.description}</p>
-                  </div>
+          {/* Courses Nav Item */}
+          <div
+            className={`nav-item ${isActive("/courses") ? "active" : ""}`}
+            onMouseEnter={() => handleMouseEnter(0)}
+            onMouseLeave={handleMouseLeave}
+          >
+            <Link to="/courses" className="nav-link">
+              Learn & Earn
+              <span className="dropdown-arrow"></span>
+            </Link>
+            {activeDropdown === 0 && (
+              <div className="card-dropdown">
+                <div className="card" id="Courses-Content">
+                  Learn & Earn
                 </div>
-              )}
-            </div>
-          ))}
+              </div>
+            )}
+          </div>
+
+          {/* Jobs Nav Item */}
+          <div
+            className={`nav-item ${isActive("/jobs") ? "active" : ""}`}
+            onMouseEnter={() => handleMouseEnter(1)}
+            onMouseLeave={handleMouseLeave}
+          >
+            <Link to="/jobs" className="nav-link">
+              Jobs
+              <span className="dropdown-arrow"></span>
+            </Link>
+            {activeDropdown === 1 && (
+              <div className="card-dropdown">
+                <div id="Jobs-Content">
+                  <JobsContent />
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Discover Nav Item */}
+          <div
+            className={`nav-item ${isActive("/discover") ? "active" : ""}`}
+            onMouseEnter={() => handleMouseEnter(3)}
+            onMouseLeave={handleMouseLeave}
+          >
+            <Link to="/discover" className="nav-link">
+              Internships
+              <span className="dropdown-arrow"></span>
+            </Link>
+            {activeDropdown === 3 && (
+              <div className="card-dropdown">
+                <div id="Discover Content" className="card"></div>
+              </div>
+            )}
+          </div>
+
+          {/* Degree Program Nav Item */}
+          <div
+            className={`nav-item ${
+              isActive("/degree-program") ? "active" : ""
+            }`}
+            onMouseEnter={() => handleMouseEnter(4)}
+            onMouseLeave={handleMouseLeave}
+          >
+            <Link to="/degree-program" className="nav-link">
+              Discover {/*degree program*/}
+              <span className="dropdown-arrow"></span>
+            </Link>
+            {activeDropdown === 4 && (
+              <div className="card-dropdown">
+                <div id="Degree Program Content" className="card"></div>
+              </div>
+            )}
+          </div>
         </nav>
+
         <div className="action-buttons">
-          <button className="corporate-btn">Candidate</button>
-          <button className="corporate-btn">For Corporate</button>
+          <button className="corporate-btn">For Enterprise</button>
           {/* This button now opens the modal instead of navigating to the login page */}
           <button className="login-btn" onClick={openLoginModal}>
             Login

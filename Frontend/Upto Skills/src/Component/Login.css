@@ -1,0 +1,351 @@
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+  font-family: "Arial", sans-serif;
+  background-color: rgba(242, 255, 249, 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  height: 100%;
+  padding: 20px;
+}
+
+/* Main Login Container */
+.login-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  gap: 10px; /* Ensures spacing between the panels */
+}
+
+/* Left Panel Styling */
+.left-panel {
+  background: #026451;
+  color: white;
+  padding: 50px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-shadow: inset -2px 0 10px rgba(0, 0, 0, 0.1);
+  min-width: 300px;
+  border-radius: 15px 0 0 15px; /* Rounded corners */
+  height: 100%;
+  max-width: 500px; /* Limit width */
+}
+
+.brand-logo {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  background-color: #ffffff;
+  padding: 25px;
+  padding-top: 10px;
+  border-radius: 30px;
+}
+
+/* Right Panel Styling */
+/* Global Reset */
+
+/* Body Styling */
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #f2fff9; /* Light background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Right Panel Styling */
+.right-panel {
+  background: #ffffff;
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: -2px 0 20px rgba(0, 0, 0, 0.1);
+  min-width: 320px;
+  border-radius: 0 20px 20px 0; /* Smoothed corners */
+  max-width: 500px;
+  animation: fadeIn 0.5s ease;
+}
+.welcome-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: linear-gradient(90deg, var(--primary-accent), #ff8a50);
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h2 {
+  margin-bottom: 20px;
+  font-size: 2rem;
+  padding: 15px;
+  text-align: center;
+  color: #026451;
+  text-transform: capitalize;
+  font-weight: bold;
+}
+
+/* Login Form Container */
+.Login-container {
+  padding: 25px;
+  width: 100%;
+  max-width: 400px;
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+}
+
+/* Login Form Inputs */
+.login-form input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 1rem;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.login-form input:focus {
+  border-color: #06bcee;
+  outline: none;
+  box-shadow: 0 0 5px rgba(6, 188, 238, 0.5);
+}
+
+/* Forgot Password Link */
+.forgot-password {
+  display: block;
+  margin: 5px 0;
+  text-align: right;
+  color: #06bcee;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.forgot-password:hover {
+  color: #0281a9;
+  text-decoration: underline;
+}
+
+/* Login Button */
+.login-button {
+  width: 100%;
+  background: #06bcee;
+  color: #ffffff;
+  border: none;
+  padding: 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+  background: #0281a9;
+}
+
+/* Social Login Section */
+.social-login {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.social-login p {
+  font-size: 0.95rem;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+.social-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.social-buttons button {
+  background: #f8f8f8;
+  margin: 8px;
+  padding: 10px 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+  min-width: 140px;
+}
+
+.social-buttons button img {
+  width: 30px;
+  height: 30px;
+}
+
+.social-buttons button:hover {
+  transform: scale(1.05);
+  background-color: #f0f0f0;
+}
+
+/* Media Query for Small Screens */
+@media (max-width: 768px) {
+  .right-panel {
+    padding: 20px;
+    max-width: 100%;
+    border-radius: 20px;
+  }
+
+  .login-form input {
+    font-size: 0.9rem;
+  }
+
+  .social-buttons button {
+    font-size: 0.9rem;
+    min-width: 120px;
+  }
+}
+
+/* Testimonials Section */
+.testimonials-slider {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  margin-top: 20px;
+  padding: 20px 0;
+}
+
+.testimonials-slider::-webkit-scrollbar {
+  display: none;
+}
+
+.testimonial-card {
+  min-width: 280px;
+  max-width: 320px;
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  color: #333;
+  flex-shrink: 0;
+  transition: transform 0.3s ease-in-out;
+}
+
+.testimonial-card:hover {
+  transform: scale(1.05);
+}
+
+.testimonial-card p {
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  font-style: italic;
+  color: #555;
+}
+
+.testimonial-card span {
+  font-weight: bold;
+  color: #026451;
+}
+
+/* Media Query for Small Screens */
+@media (max-width: 768px) {
+  .left-panel,
+  .right-panel {
+    flex: 1 1 100%;
+    padding: 20px;
+  }
+
+  .login-container {
+    flex-direction: column;
+  }
+
+  .testimonials-slider {
+    gap: 10px;
+  }
+
+  .testimonial-card {
+    flex: 0 0 250px;
+  }
+
+  .social-buttons button {
+    padding: 5px 10px;
+  }
+}
+/* Testimonials Container */
+.testimonials-slider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin-top: 20px;
+}
+
+/* Testimonial Card */
+.testimonial-card {
+  display: none; /* Hide all testimonials initially */
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  font-size: 1rem;
+  color: #333;
+  transition: transform 0.3s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+/* Active testimonial (only one is shown at a time) */
+.testimonial-card.active {
+  display: flex; /* Show only the active testimonial */
+  transform: scale(1.1); /* Slightly enlarge the visible one */
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+  opacity: 1;
+}
+
+/* Fade out non-active testimonials */
+.testimonial-card:not(.active) {
+  opacity: 0;
+}
+
+/* For smaller screens, adjust the display */
+@media (max-width: 768px) {
+  .testimonial-card {
+    width: 250px;
+  }
+}

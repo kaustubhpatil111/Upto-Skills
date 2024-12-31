@@ -1,185 +1,99 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import "./Login.css";
+
+const testimonials = [
+  {
+    text: "With Realto we have been able to move to another country in 4 weeks. Incredible!",
+    author: "- Eliska Trebalska",
+  },
+  {
+    text: "First touch with Realto has been amazing; the platform works effortlessly and delivers results.",
+    author: "- Jurek Jakowski",
+  },
+  {
+    text: "Realto made our dreams come true; highly recommend to anyone looking for seamless service.",
+    author: "- Alex Doe",
+  },
+];
 
 const Login = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  // Automatically switch to the next testimonial every 5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
+    }, 5000); // Switch every 5 seconds
+
+    return () => clearInterval(interval); // Clean up on unmount
+  }, []);
+
   return (
-    <div
-      style={{
-        fontFamily: "Arial, sans-serif",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100vh",
-        backgroundColor: "#dff8f5",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          backgroundColor: "#ffffff",
-          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-          borderRadius: "8px",
-          overflow: "hidden",
-          maxWidth: "900px",
-          width: "100%",
-        }}
-      >
-        <div
-          style={{
-            backgroundColor: "#00b289",
-            color: "white",
-            padding: "40px",
-            flex: 1,
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-          }}
-        >
-          <h1 style={{ fontSize: "2rem", marginBottom: "20px" }}>
-            Welcome Back!
-          </h1>
-          <p style={{ fontSize: "1rem", marginBottom: "40px" }}>
-            Log in to continue your journey with UptoSkills and access all our
-            features.
-          </p>
+    <div className="login-container">
+      <div className="left-panel">
+        <div className="brand-container">
+          <img className="brand-logo" src="/UptoSkills.png" alt="UptoSkills" />
         </div>
-        <div
-          style={{
-            flex: 1,
-            padding: "40px",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            backgroundColor: "#f5f9fc",
-          }}
-        >
-          <h2
-            style={{
-              fontSize: "1.8rem",
-              marginBottom: "20px",
-              color: "#ff7849",
-            }}
-          >
-            Login
-          </h2>
-          <form>
-            <div style={{ marginBottom: "20px" }}>
-              <input
-                type="email"
-                placeholder="Email"
-                required
-                style={{
-                  width: "100%",
-                  padding: "10px",
-                  border: "1px solid #ccc",
-                  borderRadius: "5px",
-                  backgroundColor: "#ffffff",
-                  boxSizing: "border-box",
-                }}
-              />
-            </div>
-            <div style={{ marginBottom: "20px" }}>
-              <input
-                type="password"
-                placeholder="Password"
-                required
-                style={{
-                  width: "100%",
-                  padding: "10px",
-                  border: "1px solid #ccc",
-                  borderRadius: "5px",
-                  backgroundColor: "#ffffff",
-                  boxSizing: "border-box",
-                }}
-              />
-            </div>
-            <button
-              type="submit"
-              style={{
-                backgroundColor: "#ff7849",
-                color: "white",
-                border: "none",
-                padding: "12px",
-                width: "100%",
-                borderRadius: "5px",
-                fontSize: "1rem",
-                cursor: "pointer",
-                marginTop: "10px",
-              }}
+        <h2 className="headline">
+          Start your remarkable <br />
+          journey with us!
+        </h2>
+        <p className="intro-text">
+          Our cold email automation helps you send personalized cold emails at
+          scale with high email deliverability.
+        </p>
+        <div className="testimonials-slider">
+          {testimonials.map((testimonial, index) => (
+            <div
+              key={index}
+              className={`testimonial-card ${
+                index === currentIndex ? "active" : ""
+              }`}
             >
+              <p>{testimonial.text}</p>
+              <span>{testimonial.author}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="right-panel">
+        <div className="login-form-container">
+          <div className="welcome-container">
+            <img className="hand-icon" src="hand-icon.png" alt="Hand icon" />
+            <h2>Welcome Back</h2>
+          </div>
+
+          <p className="login-description">
+            Empower your experience, sign up for a free account today
+          </p>
+          <form className="login-form">
+            <input type="email" placeholder="Email" required />
+            <input type="password" placeholder="Password" required />
+            <a href="#" className="forgot-password">
+              Forgot Password?
+            </a>
+            <button type="submit" className="login-button">
               Login
             </button>
           </form>
-          <div
-            style={{
-              backgroundColor: "#ffffff",
-              padding: "12px",
-              borderRadius: "5px",
-              width: "100%",
-              height: "auto",
-              marginTop: "15px",
-              textAlign: "center",
-              fontSize: "0.9rem",
-              color: "#333",
-              border: "1px solid #ccc",
-              boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
-            }}
-          >
-            <p>
-              Don't have an account?{" "}
-              <a href="#" style={{ color: "#e66e3f" }}>
-                Register
-              </a>
-            </p>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              marginTop: "20px",
-            }}
-          >
-            <button
-              style={{
-                flex: 1,
-                margin: "0 5px",
-                background: "none",
-                border: "1px solid #ccc",
-                padding: "10px",
-                borderRadius: "5px",
-                cursor: "pointer",
-                color: "#333",
-              }}
-            >
-              Sign in with Google
-            </button>
-            <button
-              style={{
-                flex: 1,
-                margin: "0 5px",
-                background: "none",
-                border: "1px solid #ccc",
-                padding: "10px",
-                borderRadius: "5px",
-                cursor: "pointer",
-                color: "#333",
-              }}
-            >
-              Sign in with Instagram
-            </button>
-            <button
-              style={{
-                flex: 1,
-                margin: "0 5px",
-                background: "none",
-                border: "1px solid #ccc",
-                padding: "10px",
-                borderRadius: "5px",
-                cursor: "pointer",
-                color: "#333",
-              }}
-            >
-              Sign in with LinkedIn
-            </button>
+          <p className="signup-link">
+            Don’t have an account? <a href="#">Sign Up</a>
+          </p>
+
+          <div className="social-login">
+            <p>Or Continue With</p>
+            <div className="social-buttons">
+              <button id="google">
+                <img src="/google.png" alt="Google" /> Google
+              </button>
+              <button id="instagram">
+                <img src="/Instagram.png" alt="Instagram" /> Instagram
+              </button>
+              <button id="linkedin">
+                <img src="/Linkedin.png" alt="LinkedIn" /> LinkedIn
+              </button>
+            </div>
           </div>
         </div>
       </div>

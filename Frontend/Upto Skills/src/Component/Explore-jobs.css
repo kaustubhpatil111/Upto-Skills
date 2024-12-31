@@ -3,7 +3,7 @@
   width: auto;
   max-width: 1000.5px;
   height: auto;
-  min-height: 400px; /* Reduced height for a rectangular shape */
+  min-height: 300px; /* Reduced height for a rectangular shape */
   margin: 20px auto; /* Center horizontally */
   padding: 30px;
   border-radius: 30.15px;
@@ -72,11 +72,11 @@
 }
 
 .woman-image {
-  width: 100%;
+  width: 85%;
   max-width: 600px; /* Adjust as necessary */
   height: auto;
   position: absolute;
-  top: -220px; /* Adjust to place the head slightly above the frame */
+  top: -190px; /* Adjust to place the head slightly above the frame */
   right: 0;
 }
 
