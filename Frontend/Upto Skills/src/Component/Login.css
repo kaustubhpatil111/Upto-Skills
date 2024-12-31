@@ -6,16 +6,6 @@
 }
 
 /* Body Styling */
-body {
-  font-family: "Arial", sans-serif;
-  background-color: rgba(242, 255, 249, 1);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  height: 100%;
-  padding: 20px;
-}
 
 /* Main Login Container */
 .login-container {
@@ -61,12 +51,11 @@ body {
 /* Body Styling */
 body {
   font-family: "Arial", sans-serif;
-  background-color: #f2fff9; /* Light background */
+  background-color: #f2fff9;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  padding: 20px;
 }
 
 /* Right Panel Styling */

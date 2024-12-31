@@ -95,17 +95,16 @@ const NavigationBar = ({ openLoginModal }) => {
           </div>
         </nav>
 
+        <div className="icons">
+          <input type="text" className="search-input" placeholder="Search..." />
+          <img src="/search.png" alt="Search Icon" className="search-icon" />
+        </div>
+
         <div className="action-buttons">
-          <button className="corporate-btn">For Enterprise</button>
-          {/* This button now opens the modal instead of navigating to the login page */}
           <button className="login-btn" onClick={openLoginModal}>
             Login
           </button>
-        </div>
-        <div className="icons">
-          <button className="search-btn">
-            <img src="/search.png" alt="Search" />
-          </button>
+          <button className="corporate-btn">For Enterprise</button>
         </div>
       </div>
     </header>
