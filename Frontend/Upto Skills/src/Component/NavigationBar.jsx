@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./NavigationBar.css";
-import JobsContent from "./Jobs-Content";
-import Discove_Conent from "./Discover_Content";
-
+import JobsContent from "./naviagatio bar content/Jobs-Content";
+import Discove_Conent from "./naviagatio bar content/Discover_Content";
+import Internship_content from "./naviagatio bar content/Internship_content";
+import Learn_Earn from "./naviagatio bar content/Learn_Earn";
 const NavigationBar = ({ openLoginModal }) => {
   // Accept the openLoginModal function
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -34,7 +35,7 @@ const NavigationBar = ({ openLoginModal }) => {
             {activeDropdown === 0 && (
               <div className="card-dropdown">
                 <div id="Courses-Content">
-                  <Discove_Conent />
+                  <Learn_Earn />
                 </div>
               </div>
             )}
@@ -71,8 +72,8 @@ const NavigationBar = ({ openLoginModal }) => {
             </Link>
             {activeDropdown === 3 && (
               <div className="card-dropdown">
-                <div id="Discover Content">
-                  <Discove_Conent />
+                <div id="Internship">
+                  <Internship_content />
                 </div>
               </div>
             )}

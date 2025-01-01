@@ -43,10 +43,7 @@ const Login = () => {
           Start your remarkable <br />
           journey with us!
         </h2>
-        <p className="intro-text">
-          Our cold email automation helps you send personalized cold emails at
-          scale with high email deliverability.
-        </p>
+
         <div className="testimonials-slider">
           {testimonials.map((testimonial, index) => (
             <div
@@ -73,7 +70,10 @@ const Login = () => {
             Empower your experience, sign up for a free account today
           </p>
           <form className="login-form">
-            <input type="email" placeholder="Username or Email" required />
+            <div className="loginFormContainer">
+              <input type="email" placeholder="Username or Email " required />
+              📧
+            </div>
             <div className="password-container">
               <input
                 type={showPassword ? "text" : "password"}
@@ -89,22 +89,24 @@ const Login = () => {
               </button>
             </div>
             <a href="#" className="forgot-password">
-              Forgot Password?
+              🔒 Forgot Password?
             </a>
             <button type="submit" className="login-button">
               Login
             </button>
           </form>
-          <p className="signup-link">
-            Don’t have an account? <a href="#">Sign Up</a>
-          </p>
+          <br />
+          <button type="submit" className="signup-button">
+            Don’t have an account? Sign Up
+          </button>
 
           <div className="social-login">
             <p>Or Continue With</p>
             <div className="social-buttons">
               <button id="google">
-                <img src="/google.png" alt="Google" /> Google
+                <img src="/google.png" alt="Google" />
               </button>
+              Google
             </div>
           </div>
         </div>
