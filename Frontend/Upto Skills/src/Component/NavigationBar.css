@@ -47,19 +47,26 @@
 .nav-item {
   position: relative;
 }
-
 .nav-link {
-  color: var(--secondary-accent);
+  color: rgba(2, 100, 81, 1); /* Soft blackish color for better readability */
   text-decoration: none;
-  font-size: 13px;
-  font-weight: bold;
+  font-size: 14px;
+  font-weight: 600; /* Slightly bold for emphasis */
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 5px;
-  transition: color 0.6s ease, transform 0.6s ease;
+  gap: 5px; /* Better spacing between items */
+  line-height: 1.5; /* Improves readability */
+  letter-spacing: 0.3px; /* Adds spacing between letters */
+  transition: color 0.3s ease, transform 0.3s ease-in-out; /* Smooth animations */
 }
+
+.nav-link:hover {
+  color: #1a1a1a; /* Slightly darker shade on hover */
+  transform: scale(1.05); /* Subtle zoom effect */
+}
+
 .dropdown-arrow {
   display: inline-block;
   width: 4px;
@@ -103,7 +110,7 @@
   padding: 10px 25px;
   border-radius: 25px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
 }
 
 .corporate-btn {
@@ -130,35 +137,14 @@
   transform: scale(1.05);
 }
 
-/* Search Button Styling */
-.search-btn {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 180px; /* Adjusted width for input */
-  height: 40px;
-  border: none;
-  border-radius: 20px; /* Rounded edges for better aesthetics */
-  box-shadow: 0 8px 15px var(--shadow-color);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  padding: 0 10px; /* Padding for inner elements */
-  background-color: var(--button-bg-color); /* Add suitable color */
-}
-
-.search-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 12px 25px var(--shadow-color);
-}
-
 /* Icons Container Styling */
 .icons {
   display: flex;
   align-items: center;
   justify-content: space-between; /* Place input and icon at opposite ends */
-  width: 300px; /* Adjust width as needed */
+  width: 200px; /* Adjust width as needed */
   padding: 5px 10px;
+
   border: 1px solid var(--border-color); /* Add a border for aesthetics */
   border-radius: 20px; /* Rounded edges for a modern look */
   box-shadow: 0 8px 15px var(--shadow-color);
@@ -167,11 +153,12 @@
 
 /* Search Input Styling */
 .search-input {
-  flex: 1; /* Allow input to take up remaining space */
+  flex: 1;
   border: none;
   outline: none;
   background: transparent;
   font-size: 14px;
+  width: 100px;
   color: var(--text-color); /* Set text color */
   padding: 5px 10px;
 }

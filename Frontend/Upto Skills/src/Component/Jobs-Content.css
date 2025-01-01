@@ -32,38 +32,53 @@ li {
 .section-title {
   font-size: 16px;
   font-weight: 500;
-  color: #ff6d34; /* Primary accent color */
+  color: rgba(2, 100, 81, 1); /* Primary accent color */
   margin-bottom: 20px;
 }
 
 /* Section List */
 .section-list {
-  list-style: none;
+  color: rgba(2, 100, 81, 1);
   padding: 0;
   margin: 0;
 }
 
-/* Section Links */
 .section-link {
-  display: block;
-  font-size: 14px;
+  display: inline-block; /* Ensure the link is treated as inline for better control */
+  font-size: 15px;
   font-weight: 400;
   color: #ff6d34; /* Accent color for links */
   text-decoration: none;
   margin-bottom: 8px;
-  transition: color 0.3s ease, text-decoration 0.3s ease;
+  position: relative; /* Necessary for positioning the pseudo-element */
+  transition: color 0.3s ease;
+}
+
+.section-link::after {
+  content: ""; /* Creates an empty pseudo-element */
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0; /* Initially hidden */
+  height: 2px; /* Thickness of the underline */
+  background-color: #ff6d34; /* Accent color for the underline */
+  transition: width 0.3s ease; /* Smooth animation */
 }
 
 .section-link:hover {
   color: #ff6d34; /* Keeps hover consistent with primary accent */
-  text-decoration: underline;
+}
+
+.section-link:hover::after {
+  width: 100%; /* Expands the underline on hover */
 }
 
 /* Section Description */
 .section-description {
   font-size: 14px;
+
   color: #666; /* Neutral description text */
-  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
 /* Section 2 */

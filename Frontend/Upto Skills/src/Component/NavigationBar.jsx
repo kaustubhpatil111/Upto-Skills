@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./NavigationBar.css";
 import JobsContent from "./Jobs-Content";
+import Discove_Conent from "./Discover_Content";
 
 const NavigationBar = ({ openLoginModal }) => {
   // Accept the openLoginModal function
@@ -32,8 +33,8 @@ const NavigationBar = ({ openLoginModal }) => {
             </Link>
             {activeDropdown === 0 && (
               <div className="card-dropdown">
-                <div className="card" id="Courses-Content">
-                  Learn & Earn
+                <div id="Courses-Content">
+                  <Discove_Conent />
                 </div>
               </div>
             )}
@@ -58,7 +59,7 @@ const NavigationBar = ({ openLoginModal }) => {
             )}
           </div>
 
-          {/* Discover Nav Item */}
+          {/* InternShip Nav Item */}
           <div
             className={`nav-item ${isActive("/discover") ? "active" : ""}`}
             onMouseEnter={() => handleMouseEnter(3)}
@@ -70,12 +71,14 @@ const NavigationBar = ({ openLoginModal }) => {
             </Link>
             {activeDropdown === 3 && (
               <div className="card-dropdown">
-                <div id="Discover Content" className="card"></div>
+                <div id="Discover Content">
+                  <Discove_Conent />
+                </div>
               </div>
             )}
           </div>
 
-          {/* Degree Program Nav Item */}
+          {/* Discover Nav Item */}
           <div
             className={`nav-item ${
               isActive("/degree-program") ? "active" : ""
@@ -84,12 +87,14 @@ const NavigationBar = ({ openLoginModal }) => {
             onMouseLeave={handleMouseLeave}
           >
             <Link to="/degree-program" className="nav-link">
-              Discover {/*degree program*/}
+              Discover {/*Discover program*/}
               <span className="dropdown-arrow"></span>
             </Link>
             {activeDropdown === 4 && (
               <div className="card-dropdown">
-                <div id="Degree Program Content" className="card"></div>
+                <div id="Degree Program Content">
+                  <Discove_Conent />
+                </div>
               </div>
             )}
           </div>

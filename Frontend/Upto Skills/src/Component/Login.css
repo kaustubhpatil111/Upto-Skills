@@ -5,8 +5,6 @@
   box-sizing: border-box;
 }
 
-/* Body Styling */
-
 /* Main Login Container */
 .login-container {
   display: flex;
@@ -43,19 +41,6 @@
   padding: 25px;
   padding-top: 10px;
   border-radius: 30px;
-}
-
-/* Right Panel Styling */
-/* Global Reset */
-
-/* Body Styling */
-body {
-  font-family: "Arial", sans-serif;
-  background-color: #f2fff9;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
 }
 
 /* Right Panel Styling */
@@ -337,4 +322,30 @@ h2 {
   .testimonial-card {
     width: 250px;
   }
+}
+/* Password Container for Eye Icon */
+.password-container {
+  position: relative;
+  width: 100%;
+}
+
+.password-container input {
+  padding-right: 40px; /* Space for the eye icon */
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: #666;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.toggle-password:hover {
+  color: #0281a9;
 }

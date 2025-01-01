@@ -18,15 +18,20 @@ const testimonials = [
 
 const Login = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [showPassword, setShowPassword] = useState(false);
 
   // Automatically switch to the next testimonial every 5 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
-    }, 5000); // Switch every 5 seconds
+    }, 5000);
 
     return () => clearInterval(interval); // Clean up on unmount
   }, []);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevState) => !prevState);
+  };
 
   return (
     <div className="login-container">
@@ -68,8 +73,21 @@ const Login = () => {
             Empower your experience, sign up for a free account today
           </p>
           <form className="login-form">
-            <input type="email" placeholder="Email" required />
-            <input type="password" placeholder="Password" required />
+            <input type="email" placeholder="Username or Email" required />
+            <div className="password-container">
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="Password"
+                required
+              />
+              <button
+                type="button"
+                className="toggle-password"
+                onClick={togglePasswordVisibility}
+              >
+                {showPassword ? "🐵" : "🙈"}
+              </button>
+            </div>
             <a href="#" className="forgot-password">
               Forgot Password?
             </a>
@@ -86,12 +104,6 @@ const Login = () => {
             <div className="social-buttons">
               <button id="google">
                 <img src="/google.png" alt="Google" /> Google
-              </button>
-              <button id="instagram">
-                <img src="/Instagram.png" alt="Instagram" /> Instagram
-              </button>
-              <button id="linkedin">
-                <img src="/Linkedin.png" alt="LinkedIn" /> LinkedIn
               </button>
             </div>
           </div>
