@@ -84,12 +84,7 @@ function App() {
       <Partners />
       <FreeTraining />
       <Explore />
-      <div className="container mx-auto p-4">
-        <CourseCard />
-      </div>
-      <div className="container mx-auto p-4">
-        <CourseSection />
-      </div>
+      <CourseCard />
       <StatisticsSection />
       <ExploreJobs />
       <Footer />

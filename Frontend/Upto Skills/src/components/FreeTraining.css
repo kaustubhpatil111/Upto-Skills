@@ -1,24 +1,35 @@
 .container {
-  background-color: #f8f8f8;
-  padding: 50px;
+  background-color: rgba(242, 255, 249, 1);
+  padding: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 80%;
 }
 .cards {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Two cards per row */
-  gap: 20px; /* Space between cards */
-  /* padding: 20px; */
+  display: flex;
+  flex-wrap: wrap; /* Allows wrapping to a new row */
+  gap: 10px; /* Space between cards */
+  padding: 0 40px;
+  gap: 20px;
   list-style: none;
 }
 
 .card {
   display: flex;
-  width: 75%;
+  width: 55%;
   background-color: #ffffff;
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  padding: 20px;
+  padding: 15px;
+  gap: 15px;
   text-align: center;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.cards .card {
+  flex: 0 0 calc(50% - 10px);
+  box-sizing: border-box;
 }
 
 .card:hover {

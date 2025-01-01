@@ -18,7 +18,7 @@ const Explore = () => {
       duration: "18 Nov 24, 04:00 PM IST - 22 Dec 24, 11:59 PM IST",
       color: "#000", // Light red background for this card
       borderColor: "red",
-      float:"left"
+      float: "left",
     },
     {
       icon: img2,
@@ -29,7 +29,7 @@ const Explore = () => {
       duration: "18 Nov 24, 04:01 PM IST - 02 Jan 25, 11:59 PM IST",
       color: "#fff", // Light green background for this card
       borderColor: "hsl(128, 92%, 47%)",
-      float:"right"
+      float: "right",
     },
     {
       icon: img3,
@@ -40,7 +40,7 @@ const Explore = () => {
       duration: "18 Nov 24, 04:02 PM IST - 02 Jan 25, 11:59 PM IST",
       color: "#000", // Light green background for this card
       borderColor: "hsl(128, 92%, 47%)",
-      float:"left"
+      float: "left",
     },
     {
       icon: img4,
@@ -51,7 +51,7 @@ const Explore = () => {
       duration: "18 Nov 24, 04:02 PM IST - 02 Jan 25, 11:59 PM IST",
       color: "#000", // Light green background for this card
       borderColor: "hsl(128, 92%, 47%)",
-      float:"right"
+      float: "right",
     },
     {
       icon: img3,
@@ -62,58 +62,45 @@ const Explore = () => {
       duration: "18 Nov 24, 04:02 PM IST - 02 Jan 25, 11:59 PM IST",
       color: "#000", // Light green background for this card
       borderColor: "hsl(128, 92%, 47%)",
-      float:"left"
+      float: "left",
     },
   ];
 
   return (
     <>
-      {/* Decorative wave border at the top */}
-      <div
-        style={{
-          borderImage: `url(${waveline}) 30 repeat`,
-          borderTop: "10px solid transparent", // You need to define a border for the image to apply
-        }}
-      ></div>
       <div className="boxContainer">
+        <div className="blurredSpot spot1"></div>
+        <div className="blurredSpot spot2"></div>
         <div className="imageContainer">
-        <h1>Explore Our Ecosystem</h1>
-        <p>A one-stop destination for all your learning to placement needs.</p>
+          <h1>Explore Our Ecosystem</h1>
+          <p>
+            A one-stop destination for all your learning to placement needs.
+          </p>
+          <img src="SVG.png" alt="" />
         </div>
 
-        {/* Grid for displaying items */}
-        <div className="gridContainer1 "  >
-        {freetrainingData.map((item, index) => (
-           <>
-           
+        <div className="gridContainer1 ">
+          {freetrainingData.map((item, index) => (
+            <>
               <div
-                className={`item2 ${index % 2 === 0 ? 'right' : 'left'}`}
+                className={`item2 ${index % 2 === 0 ? "right" : "left"}`}
                 key={index}
               >
                 <div className="subitem2-1">
-                <img src={item.icon} width={"50px"} alt="icon" />
+                  <img src={item.icon} width={"50px"} alt="icon" />
+                </div>
+                <div className="subitem2-2">
+                  <h2>{item.headings}</h2>
+                  <p>{item.description}</p>
+                </div>
               </div>
-              <div className="subitem2-2">
-                <h2>{item.headings}</h2>
-                <p>{item.description}</p>
-              </div>
-            </div></>
+            </>
           ))}
-         <div style={{clear:"both"}}></div>
+          <div style={{ clear: "both" }}></div>
         </div>
-        
       </div>
-
-      {/* Decorative wave border at the bottom */}
-      <div
-        style={{
-          borderImage: `url(${waveline}) 30 repeat`,
-          borderTop: "10px solid transparent",
-        }}
-      ></div>
     </>
   );
 };
 
 export default Explore;
-

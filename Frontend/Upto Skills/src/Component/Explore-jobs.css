@@ -6,6 +6,8 @@
   min-height: 300px; /* Reduced height for a rectangular shape */
   margin: 20px auto; /* Center horizontally */
   padding: 30px;
+  padding-top: 25px;
+  margin-top: 0px;
   border-radius: 30.15px;
   background: linear-gradient(
     159.69deg,
