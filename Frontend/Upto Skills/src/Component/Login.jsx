@@ -3,7 +3,7 @@ import "./Login.css";
 
 const testimonials = [
   {
-    text: "With Realto we have been able to move to another country in 4 weeks. Incredible!",
+    text: "With Realto, we have been able to move to another country in 4 weeks. Incredible!",
     author: "- Eliska Trebalska",
   },
   {
@@ -16,17 +16,16 @@ const testimonials = [
   },
 ];
 
-const Login = () => {
+const Login = ({ openRegisterModal, closeLoginModal }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showPassword, setShowPassword] = useState(false);
 
-  // Automatically switch to the next testimonial every 5 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
     }, 5000);
 
-    return () => clearInterval(interval); // Clean up on unmount
+    return () => clearInterval(interval);
   }, []);
 
   const togglePasswordVisibility = () => {
@@ -35,6 +34,10 @@ const Login = () => {
 
   return (
     <div className="login-container">
+      <button className="close-button" onClick={closeLoginModal}>
+        ×
+      </button>
+      {/* Left Panel */}
       <div className="left-panel">
         <div className="brand-container">
           <img className="brand-logo" src="/UptoSkills.png" alt="UptoSkills" />
@@ -59,6 +62,7 @@ const Login = () => {
         </div>
       </div>
 
+      {/* Right Panel */}
       <div className="right-panel">
         <div className="login-form-container">
           <div className="welcome-container">
@@ -69,44 +73,60 @@ const Login = () => {
           <p className="login-description">
             Empower your experience, sign up for a free account today
           </p>
+
+          {/* Login Form */}
           <form className="login-form">
-            <div className="loginFormContainer">
-              <input type="email" placeholder="Username or Email " required />
-              📧
+            <div className="input-group">
+              <input
+                type="email"
+                placeholder="Username or Email"
+                required
+                aria-label="Email or Username"
+              />
+              <span className="input-icon">📧</span>
             </div>
+
             <div className="password-container">
               <input
                 type={showPassword ? "text" : "password"}
                 placeholder="Password"
                 required
+                aria-label="Password"
               />
               <button
                 type="button"
                 className="toggle-password"
                 onClick={togglePasswordVisibility}
+                aria-label="Toggle Password Visibility"
               >
                 {showPassword ? "🐵" : "🙈"}
               </button>
             </div>
+
             <a href="#" className="forgot-password">
               🔒 Forgot Password?
             </a>
+
             <button type="submit" className="login-button">
               Login
             </button>
           </form>
-          <br />
-          <button type="submit" className="signup-button">
+
+          <button
+            type="button"
+            className="signup-button"
+            onClick={openRegisterModal}
+          >
             Don’t have an account? Sign Up
           </button>
 
           <div className="social-login">
             <p>Or Continue With</p>
             <div className="social-buttons">
-              <button id="google">
+              <button id="google" aria-label="Continue with Google">
                 <img src="/google.png" alt="Google" />
+                Google
               </button>
-              Google
             </div>
           </div>
         </div>

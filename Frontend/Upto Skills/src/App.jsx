@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Suspense, lazy } from "react";
+import React, { useState, Suspense, lazy } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Modal from "react-modal";
 
@@ -12,27 +12,35 @@ import FreeTraining from "./components/FreeTraining";
 import Hero from "./Component/Hero";
 import NavigationBar from "./Component/NavigationBar";
 import Partners from "./Component/Partners";
-
+import Explore from "./components/Explore";
 // Lazy-loaded components
 const Login = lazy(() => import("./Component/Login"));
 const Register = lazy(() => import("./Component/Register"));
-import Explore from "./components/Explore";
 
 function App() {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
 
   // Modal control functions
-  const openLoginModal = () => setIsLoginModalOpen(true);
+  const openLoginModal = () => {
+    setIsRegisterModalOpen(false); // Close register modal if open
+    setIsLoginModalOpen(true);
+  };
   const closeLoginModal = () => setIsLoginModalOpen(false);
+
+  const openRegisterModal = () => {
+    setIsLoginModalOpen(false); // Close login modal if open
+    setIsRegisterModalOpen(true);
+  };
+  const closeRegisterModal = () => setIsRegisterModalOpen(false);
 
   return (
     <Router>
       <NavigationBar openLoginModal={openLoginModal} />
-      {/* Pass openModal function */}
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/" element={<Hero />} />
-          <Route path="/register" element={<Register />} />
+          <Route path="/register" element={<Hero />} />
           <Route path="/courses" element={<Hero />} />
           <Route path="/jobs" element={<Hero />} />
           <Route path="/shops" element={<Hero />} />
@@ -40,6 +48,7 @@ function App() {
           <Route path="/degree-program" element={<Hero />} />
         </Routes>
       </Suspense>
+
       {/* Modal for Login */}
       <Modal
         isOpen={isLoginModalOpen}
@@ -48,43 +57,69 @@ function App() {
         ariaHideApp={false}
         style={{
           overlay: {
-            backgroundColor: "transparent",
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
             zIndex: 1000,
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
           },
           content: {
-            backdropfilter: " blur(8px)",
-            width: "800px", // Fixed width
-            height: "auto", // Adjust height dynamically
-            maxHeight: "90vh", // Prevent overflowing viewport
-            margin: "auto", // Center the modal
-            overflowY: "hidden", // Enable scrolling if content overflows
-            borderRadius: "8px", // Optional: Rounded corners
+            backdropfilter: "blur(8px)",
+            width: "800px",
+            height: "auto",
+            maxHeight: "90vh",
+            margin: "auto",
+            overflowY: "hidden",
+            borderRadius: "8px",
+            padding: 0,
           },
         }}
       >
-        <div className="full-screen-login">
-          <button
-            className="close-button"
-            onClick={closeLoginModal}
-            aria-label="Close"
-          >
-            &times;
-          </button>
-          <div className="login-content">
-            <Suspense fallback={<div>Loading Login...</div>}>
-              <Login />
-            </Suspense>
-          </div>
-        </div>
+        <Suspense fallback={<div>Loading Login...</div>}>
+          <Login
+            openRegisterModal={openRegisterModal}
+            closeLoginModal={closeLoginModal}
+          />
+        </Suspense>
       </Modal>
+
+      {/* Modal for Register */}
+      <Modal
+        isOpen={isRegisterModalOpen}
+        onRequestClose={closeRegisterModal}
+        contentLabel="Register Modal"
+        ariaHideApp={false}
+        style={{
+          overlay: {
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            zIndex: 1000,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          },
+          content: {
+            backdropfilter: "blur(8px)",
+            width: "800px",
+            height: "auto",
+            maxHeight: "90vh",
+            margin: "auto",
+            overflowY: "hidden",
+            borderRadius: "8px",
+            padding: 0,
+          },
+        }}
+      >
+        <Suspense fallback={<div>Loading Register...</div>}>
+          <Register closeRegisterModal={closeRegisterModal} />
+        </Suspense>
+      </Modal>
+
       {/* Footer and other sections */}
       <Partners />
       <FreeTraining />
       <Explore />
       <CourseCard />
+      <CourseSection />
       <StatisticsSection />
       <ExploreJobs />
       <Footer />

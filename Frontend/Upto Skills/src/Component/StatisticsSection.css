@@ -4,10 +4,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 150px 250px;
-  padding-bottom: 200px;
+  padding: 50px 50px;
+  padding-bottom: 50px;
   overflow: hidden;
-  margin-bottom: 50px;
+  margin-bottom: 10px;
+  height: 60vh;
 }
 
 /* Background Layer */
@@ -132,4 +133,27 @@ hr {
     width: 40px;
     height: 3px;
   }
+}
+/* Adjusted Blur Spot */
+.spot1 {
+  background: rgba(201, 200, 255, 0.8);
+  top: 10%; /* Moves the spot near the top */
+  right: 20%; /* Adjusts it to the bracket side */
+  position: absolute; /* Ensures the spot is positioned relative to the parent */
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  filter: blur(100px);
+  z-index: -1; /* Keeps it behind other elements */
+}
+
+/* Map Layer */
+.map-image {
+  filter: brightness(1) invert(1); /* Makes the map white */
+  max-width: 90%;
+  height: auto;
+  opacity: 0.8; /* Adjusts transparency */
+}
+.statistics-section {
+  position: relative;
 }

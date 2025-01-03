@@ -7,7 +7,7 @@
   margin: 20px auto; /* Center horizontally */
   padding: 30px;
   padding-top: 25px;
-  margin-top: 0px;
+  margin-bottom: 40px;
   border-radius: 30.15px;
   background: linear-gradient(
     159.69deg,
@@ -70,6 +70,10 @@
 .image-container {
   flex: 1;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 2rem;
   text-align: center; /* Center image in the container */
 }
 
@@ -78,7 +82,7 @@
   max-width: 600px; /* Adjust as necessary */
   height: auto;
   position: absolute;
-  top: -190px; /* Adjust to place the head slightly above the frame */
+  top: -180px; /* Adjust to place the head slightly above the frame */
   right: 0;
 }
 

@@ -1,7 +1,7 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import "./CourseCard.css";
 
-const courses = [
+const initialCourses = [
   {
     id: 1,
     title: "Product Management Basic - Course",
@@ -55,107 +55,101 @@ const courses = [
     price: "$499",
     originalPrice: "$700",
     students: "150",
-    image: "/card5.png",
+    image: "/card1.png",
   },
 ];
+
 const CourseData = () => {
-  const [cards] = useState([...courses, ...courses]); // Duplicate for seamless loop
+  const [courses, setCourses] = useState(initialCourses);
   const sliderRef = useRef(null);
-  const isDragging = useRef(false);
-  const startX = useRef(0);
-  const scrollLeft = useRef(0);
+
+  const appendCourses = () => {
+    setCourses((prevCourses) => [...prevCourses, ...initialCourses]);
+  };
 
   useEffect(() => {
+    const slider = sliderRef.current;
+
     const handleScroll = () => {
-      const slider = sliderRef.current;
-      const totalWidth = slider.scrollWidth / 2; // Width of half the track
-      if (slider.scrollLeft >= totalWidth) {
-        slider.scrollLeft -= totalWidth; // Reset to start of loop
-      } else if (slider.scrollLeft === 0) {
-        slider.scrollLeft += totalWidth; // Reset to end of loop
+      if (
+        slider.scrollLeft >=
+        slider.scrollWidth - slider.offsetWidth - 10 // Adjust for margin
+      ) {
+        appendCourses();
       }
     };
-    const slider = sliderRef.current;
+
     slider.addEventListener("scroll", handleScroll);
     return () => slider.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleMouseDown = (e) => {
-    isDragging.current = true;
-    sliderRef.current.classList.add("dragging");
-    startX.current = e.pageX - sliderRef.current.offsetLeft;
-    scrollLeft.current = sliderRef.current.scrollLeft;
-  };
-
-  const handleMouseMove = (e) => {
-    if (!isDragging.current) return;
-    e.preventDefault();
-    const x = e.pageX - sliderRef.current.offsetLeft;
-    const walk = (x - startX.current) * 1.5; // Adjust drag sensitivity
-    sliderRef.current.scrollLeft = scrollLeft.current - walk;
-  };
-
-  const handleMouseUp = () => {
-    isDragging.current = false;
-    sliderRef.current.classList.remove("dragging");
-  };
-
-  const handleMouseLeave = () => {
-    isDragging.current = false;
-    sliderRef.current.classList.remove("dragging");
-  };
-
   const scrollBy = (direction) => {
     const slider = sliderRef.current;
-    const scrollAmount = 300; // Adjust to card width
+    const card = slider.querySelector(".course-card");
+    if (!card) return;
+
+    const cardWidth =
+      card.offsetWidth + parseInt(getComputedStyle(card).marginRight || 0, 10);
+
     slider.scrollBy({
-      left: direction === "left" ? -scrollAmount : scrollAmount,
+      left: direction === "left" ? -cardWidth : cardWidth,
       behavior: "smooth",
     });
   };
 
   return (
-    <div className="courses-slider">
-      <button className="arrow left-arrow" onClick={() => scrollBy("left")}>
-        &#8249;
-      </button>
-      <div
-        className="slider-wrapper"
-        ref={sliderRef}
-        onMouseDown={handleMouseDown}
-        onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUp}
-        onMouseLeave={handleMouseLeave}
-      >
-        <div className="slider-track">
-          {cards.map((course, index) => (
-            <div className="course-card" key={`${course.id}-${index}`}>
-              <div
-                className="card-image"
-                style={{ backgroundImage: `url(${course.image})` }}
-              >
-                <div className="students-badge">
-                  <img src="/StudentBadge.png" alt="students" />+{" "}
-                  {course.students} students
-                </div>
-              </div>
-              <div className="card-details">
-                <p className="date">{course.date}</p>
-                <h3 className="title">{course.title}</h3>
-                <p className="description">{course.description}</p>
-                <div className="pricing">
-                  <span className="price">{course.price}</span>
-                  <span className="original-price">{course.originalPrice}</span>
-                </div>
-                <button className="enroll-btn">Enroll Now</button>
-              </div>
-            </div>
-          ))}
-        </div>
+    <div className="course-container">
+      <div className="containerTitle">
+        <h3>Top Courses</h3>
+        <h4>Top Most Rated Web Development Courses</h4>
       </div>
-      <button className="arrow right-arrow" onClick={() => scrollBy("right")}>
-        &#8250;
-      </button>
+      <div className="sliderContainer">
+        <button
+          className="arrow left-arrow"
+          aria-label="Scroll Left"
+          onClick={() => scrollBy("left")}
+        >
+          &#8249;
+        </button>
+        <div className="courses-slider" ref={sliderRef}>
+          <div className="slider-track">
+            {courses.map((course, index) => (
+              <div className="course-card" key={`${course.id}-${index}`}>
+                <div
+                  className="card-image"
+                  style={{ backgroundImage: `url(${course.image})` }}
+                >
+                  <div className="students-badge">
+                    <img src="/StudentBadge.png" alt="students" />+{" "}
+                    {course.students} students
+                  </div>
+                </div>
+                <div className="card-details">
+                  <p className="date">{course.date}</p>
+                  <h3 className="title">{course.title}</h3>
+                  <p className="description">{course.description}</p>
+                  <div className="enrollBtnContainer">
+                    <div className="pricing">
+                      <span className="price">{course.price}</span>
+                      <span className="original-price">
+                        {course.originalPrice}
+                      </span>
+                    </div>
+                    <button className="enroll-btn">Enroll Now</button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <button
+          className="arrow right-arrow"
+          aria-label="Scroll Right"
+          onClick={() => scrollBy("right")}
+        >
+          &#8250;
+        </button>
+      </div>
     </div>
   );
 };

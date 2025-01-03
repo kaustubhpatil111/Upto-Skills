@@ -1,197 +1,190 @@
-.courses-slider {
+/* CourseCard.css */
+
+.course-container {
+  font-family: "Inter", sans-serif;
+  background-color: #f4f6f9;
+  margin: 20px;
+  padding: 50px;
+}
+
+.containerTitle h3 {
+  font-size: 1.8rem;
+  color: #1a1a2e;
+  margin: 0;
+  text-align: center;
+}
+
+.containerTitle h4 {
+  font-size: 0.95rem;
+  color: #4b4b63;
+  text-align: center;
+}
+
+.sliderContainer {
   position: relative;
-  width: 100%;
+  padding: 20px;
   max-width: 1200px;
-  margin: auto;
-  display: flex;
-  align-items: center;
+  margin: 0 auto;
   overflow: hidden;
-  padding: 20px 0;
 }
 
-.slider-wrapper {
-  cursor: grab;
-  overflow: hidden;
-  position: relative;
-  display: flex;
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  color: #1a73e8;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
 }
 
-.slider-wrapper.dragging {
-  cursor: grabbing;
+.left-arrow {
+  left: 5px;
+}
+
+.right-arrow {
+  right: 0px;
 }
 
 .slider-track {
   display: flex;
-  align-items: center;
   transition: transform 0.3s ease-in-out;
-  user-select: none;
-}
-
-.course-card {
-  flex: 0 0 auto;
-  width: 300px;
-  height: 400px;
-  background: rgba(255, 255, 255, 1);
-  border-radius: 12px;
-  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
-  margin: 0 10px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  gap: 5px;
 }
 
 .course-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-8px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Slight lift and enhanced shadow on hover */
 }
 
 .card-image {
-  height: 160px;
+  height: 140px;
   background-size: cover;
   background-position: center;
   position: relative;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid #f4f6f9; /* Subtle separation for image */
 }
 
 .students-badge {
   position: absolute;
-  top: 12px;
-  left: 12px;
-  background: rgba(0, 123, 255, 0.9);
+  bottom: -12px;
+  left: 0px;
+  background: rgba(0, 0, 0, 0.7);
   color: white;
   font-size: 0.75rem;
-  font-weight: bold;
-  padding: 5px 10px;
-  border-radius: 15px;
+  padding: 4px 8px;
+  border-radius: 25px;
   display: flex;
   align-items: center;
   gap: 5px;
 }
-
 .students-badge img {
-  width: auto;
   height: 20px;
 }
 
-.card-details {
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  flex-grow: 1;
+.date {
+  font-size: 0.85rem;
+  color: #6c757d;
 }
 
-.card-details .date {
-  font-size: 0.8rem;
-  color: rgba(0, 0, 0, 0.6);
-}
-
-.card-details .title {
-  font-size: 1.1rem;
+.title {
+  font-size: 1rem;
+  color: #1a1a2e;
+  margin: 8px 0;
   font-weight: bold;
-  color: rgba(0, 51, 102, 1);
 }
 
-.card-details .description {
-  font-size: 0.9rem;
-  color: rgba(51, 51, 51, 0.8);
-  line-height: 1.4;
-  flex-grow: 1;
-}
-
-.pricing {
+.enrollBtnContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 10px;
+  margin-top: auto;
 }
 
-.pricing .price {
-  font-size: 1.1rem;
-  font-weight: bold;
-  color: rgba(0, 102, 68, 1);
-}
-
-.pricing .original-price {
+.pricing {
   font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.price {
+  color: #1a73e8;
+}
+
+.original-price {
   text-decoration: line-through;
-  color: rgba(102, 102, 102, 0.8);
+  color: #6c757d;
+  margin-left: 5px;
 }
 
 .enroll-btn {
-  background: rgba(255, 107, 52, 1); /* Highlight this button */
+  background: linear-gradient(90deg, #1a73e8, #4b6cb7);
   color: white;
   border: none;
-  border-radius: 5px;
-  padding: 10px;
+  padding: 8px 16px;
+  border-radius: 6px;
   font-size: 0.9rem;
-  font-weight: bold;
   cursor: pointer;
   transition: background 0.3s ease;
-  margin-top: auto;
 }
 
 .enroll-btn:hover {
-  background: rgba(255, 87, 42, 1);
+  background: linear-gradient(90deg, #4b6cb7, #1a73e8);
 }
 
-.arrow {
-  padding: 20px;
-  background: none;
-  border: none;
-  font-size: 4rem;
-  color: rgba(51, 51, 51, 0.8);
-  cursor: pointer;
-  transition: transform 0.2s ease, color 0.2s ease;
-  z-index: 10;
+@media (max-width: 768px) {
+  .courses-slider {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 15px;
+  }
+  .course-card {
+    flex: 0 0 180px;
+  }
 }
 
-.arrow:hover {
-  transform: scale(1.2);
-  color: rgba(51, 51, 51, 1);
-}
-
-.arrow.left-arrow {
-  position: absolute;
-  left: -21px;
-}
-
-.arrow.right-arrow {
-  position: absolute;
-  right: -21px;
-}
-.card-details {
-  padding: 15px;
+.course-card {
+  margin: 20px 10px;
+  flex: 0 0 220px;
+  height: 350px; /* Consistent card height */
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  flex-grow: 1;
-  justify-content: space-between; /* Ensures consistent spacing */
-  height: 180px; /* Fixed height for uniformity */
-}
-
-.card-details .title {
-  font-size: 1.1rem;
-  font-weight: bold;
-  color: rgba(0, 51, 102, 1);
+  justify-content: space-between;
   overflow: hidden;
-  white-space: nowrap; /* Prevents wrapping */
-  text-overflow: ellipsis; /* Adds '...' for long text */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.card-details .description {
+.description {
   font-size: 0.9rem;
-  color: rgba(51, 51, 51, 0.8);
-  line-height: 1.4;
+  color: #4b4b63;
+  margin-bottom: 12px;
   overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 2; /* Limits to 3 lines */
-  -webkit-box-orient: vertical;
   text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
-.enroll-btn {
-  margin-top: auto;
-  align-self: center; /* Centers the button */
+.card-details {
+  flex: 1; /* Allows the card to stretch */
+  padding: 15px;
+  text-align: left;
+}
+.courses-slider {
+  display: flex;
+  overflow-x: auto; /* Ensure horizontal scrolling */
+  scroll-behavior: smooth; /* Smooth scrolling behavior */
+}
+
+.courses-slider {
+  overflow-x: scroll;
+  scrollbar-width: none; /* For Firefox */
+}
+
+.courses-slider::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Edge */
 }

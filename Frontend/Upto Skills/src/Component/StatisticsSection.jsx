@@ -4,10 +4,6 @@ import "./StatisticsSection.css";
 const StatisticsSection = () => {
   return (
     <section className="statistics-section">
-      {/* Gradient background */}
-      <div className="blurredSpot spot1"></div>
-      <div className="background-layer"></div>
-
       {/* Map image */}
       <div className="map-layer">
         <img src="/world-map.png" alt="World Map" className="map-image" />

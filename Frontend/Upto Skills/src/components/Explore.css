@@ -2,16 +2,26 @@
 .boxContainer {
   position: relative; /* Essential for absolute positioning */
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 1fr 1fr;
   font-family: Arial, sans-serif;
   text-align: center;
-  padding: 2rem;
+  padding: 1rem;
   background: rgba(242, 255, 249, 1);
   z-index: 1; /* Bring the container above blurred spots */
 }
 
+.imageContainer {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+}
+
 /* Heading and description */
 .imageContainer h1 {
+  width: 90%;
   font-size: 2.5rem;
   color: rgba(76, 209, 193, 1);
   margin-bottom: 1rem;
@@ -26,77 +36,31 @@
 }
 
 .imageContainer p {
+  width: 100%;
   font-size: 1.2rem;
   color: #6c757d;
   z-index: 1; /* Ensures text is above blurred spots */
   position: relative;
 }
 
-/* Grid container */
-.gridContainer1 {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
-  margin-top: 2rem;
-  z-index: 1; /* Brings the grid content above blurred spots */
-  position: relative;
-}
-
-/* Individual grid items */
-.item2 {
-  display: flex;
-  align-items: center;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 1.5rem;
-  width: 300px;
-  position: relative;
-  float: left;
-  transition: transform 0.3s;
-  z-index: 1; /* Ensures items are above blurred spots */
-}
-
-.item2:hover {
-  transform: translateY(-5px);
-  z-index: 2; /* Highlights the item on hover */
-}
-
-/* Icon section */
+/* Sub-items */
 .subitem2-1 img {
-  margin-right: 1rem;
+  margin-right: 0.1rem;
+  margin-left: 0.5rem;
   border-radius: 50%;
-  border: 2px solid #28a745;
 }
 
 .subitem2-2 h2 {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: #343a40;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0rem;
+  padding-top: 0;
 }
 
 .subitem2-2 p {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: #6c757d;
-}
-
-/* Clear floats */
-.clearfix {
-  clear: both;
-}
-
-/* Responsive design */
-@media screen and (max-width: 768px) {
-  .gridContainer1 {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .item2 {
-    width: 100%;
-    margin-bottom: 1rem;
-  }
+  margin: 0;
 }
 
 /* Blurred circular spots */
@@ -105,24 +69,72 @@
   width: 400px;
   height: 400px;
   border-radius: 50%;
-  backdrop-filter: blur(100px); /* Inner blur effect */
+  backdrop-filter: blur(100px);
   z-index: 0; /* Keeps spots in the background */
-  box-shadow: 0px 20px 50px rgba(0, 0, 0, 1); /* More defined shadow */
+  box-shadow: 0px 20px 50px rgba(0, 0, 0, 1);
 }
 
-/* First spot */
 .spot1 {
   background: rgba(201, 200, 255, 0.8);
-  top: 25%; /* Adjusted for better visibility */
+  top: 25%;
   left: 35%;
-
   filter: blur(100px);
 }
 
-/* Second spot */
 .spot2 {
   background: rgba(246, 164, 164, 0.5);
-  bottom: 40%; /* Adjusted for better visibility */
+  bottom: 40%;
   right: 5%;
   filter: blur(100px);
+}
+
+/* Grid container */
+.gridContainer1 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px; /* Small gap between grid items */
+  margin: 1rem 0; /* Adjusted for a tighter layout */
+  position: relative;
+  justify-items: center;
+}
+
+/* Empty cells */
+.empty-cell {
+  grid-column: span 1;
+  height: auto;
+  visibility: hidden;
+}
+
+/* Individual grid items */
+.item2 {
+  grid-column: span 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  transition: transform 0.3s;
+  position: relative;
+  width: 95%;
+  height: auto;
+}
+
+.item2:hover {
+  transform: translateY(-5px);
+  z-index: 2;
+}
+
+/* Responsive design */
+@media screen and (max-width: 768px) {
+  .gridContainer1 {
+    grid-template-columns: 1fr;
+  }
+
+  .item2,
+  .empty-cell {
+    grid-column: span 1;
+    width: 70%;
+  }
 }

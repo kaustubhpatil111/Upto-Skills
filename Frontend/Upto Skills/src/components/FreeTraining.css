@@ -1,35 +1,32 @@
-.container {
-  background-color: rgba(242, 255, 249, 1);
-  padding: 1px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-  width: 80%;
-}
 .cards {
-  display: flex;
-  flex-wrap: wrap; /* Allows wrapping to a new row */
-  gap: 10px; /* Space between cards */
-  padding: 0 40px;
-  gap: 20px;
+  width: 80%;
+  margin: 50px auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two cards per row */
+  gap: 40px; /* Space between the cards */
+  padding: 0 20px;
   list-style: none;
+  background-color: rgba(248, 248, 248, 1);
+}
+
+.cards li:nth-child(odd) {
+  justify-self: start; /* Float odd cards (left column) to the left */
+}
+
+.cards li:nth-child(even) {
+  justify-self: end; /* Float even cards (right column) to the right */
 }
 
 .card {
+  width: 80%;
   display: flex;
-  width: 55%;
+  flex-direction: row;
   background-color: #ffffff;
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  padding: 15px;
-  gap: 15px;
+  padding: 20px;
   text-align: center;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.cards .card {
-  flex: 0 0 calc(50% - 10px);
-  box-sizing: border-box;
 }
 
 .card:hover {
@@ -40,7 +37,6 @@
 .card__icon {
   width: 60px;
   height: 60px;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -84,6 +80,7 @@
 .cards li:nth-child(4) {
   background-color: #ffffff; /* Neutral light */
 }
+
 .cards li:nth-child(2) .card__title,
 .cards li:nth-child(2) .card__description {
   color: #fff; /* Override color to white */
@@ -97,18 +94,20 @@
   box-shadow: 0 0 10px rgba(0, 0, 255, 0.3);
   transition: transform 0.3s ease-in-out;
 }
+
 .Info_div {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  /* how to make text alighed to left side ?*/
 }
+
 .card__icon:hover {
   background-color: rgba(0, 0, 0, 0.1); /* Slightly darker on hover */
   box-shadow: 0 0 15px rgba(0, 0, 255, 0.6); /* Add glow effect */
 }
+
 .icon_background:hover {
   transform: scale(1.1);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);

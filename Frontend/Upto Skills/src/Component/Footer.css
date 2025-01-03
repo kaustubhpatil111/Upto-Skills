@@ -9,23 +9,30 @@
 /* Upper Section */
 #Upper {
   display: grid;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(150px, 1fr)
-  ); /* Responsive grid */
-  gap: 0px; /* Compact spacing */
+  grid-template-columns: repeat(5, 1fr); /* Five equal sections */
+  gap: 20px; /* Add space between sections */
   max-width: 100%;
   margin: 0 auto;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #ffffff;
+  padding: 20px 10px;
   background-color: #042b2d;
+  border-bottom: 1px solid #ffffff;
+  align-items: start; /* Align content to the top */
 }
 
 #Upper section {
   text-align: left;
-  padding: 0px; /* Balanced spacing */
-  margin: 0 auto; /* Center alignment */
-  max-width: 90%; /* Optimized width for links container */
+  padding: 0 10px; /* Add some spacing inside each section */
+  margin: 0 auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  #Upper {
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(150px, 1fr)
+    ); /* Adjust grid for small screens */
+  }
 }
 
 #Upper img {
@@ -153,4 +160,12 @@
   .Lower-Container input[type="text"] {
     width: 100%; /* Full width for input */
   }
+}
+.highlight {
+  color: #ff6d34; /* Eye-catching orange color */
+  font-weight: bold; /* Emphasize the text */
+  background-color: #ffffff1a; /* Subtle transparent white background */
+  padding: 2px 5px; /* Add spacing around the text */
+  border-radius: 3px; /* Smooth edges for a modern look */
+  font-size: 15px; /* Maintain readability */
 }

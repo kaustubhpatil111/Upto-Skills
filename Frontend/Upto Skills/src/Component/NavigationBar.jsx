@@ -8,6 +8,7 @@ import Learn_Earn from "./naviagatio bar content/Learn_Earn";
 const NavigationBar = ({ openLoginModal }) => {
   // Accept the openLoginModal function
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const [showCorporateDropdown, setShowCorporateDropdown] = useState(false);
   const location = useLocation();
 
   const handleMouseEnter = (index) => setActiveDropdown(index);
@@ -110,7 +111,19 @@ const NavigationBar = ({ openLoginModal }) => {
           <button className="login-btn" onClick={openLoginModal}>
             Login
           </button>
-          <button className="corporate-btn">For Enterprise</button>
+
+          <div
+            className="corporate-btn-wrapper"
+            onMouseEnter={() => setShowCorporateDropdown(true)}
+            onMouseLeave={() => setShowCorporateDropdown(false)}
+          >
+            <button className="corporate-btn">For Enterprise</button>
+            {showCorporateDropdown && (
+              <div className="corporate-dropdown">
+                <JobsContent />
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </header>
