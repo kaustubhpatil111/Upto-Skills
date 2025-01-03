@@ -47,10 +47,10 @@ function Footer() {
         <section id="services">
           <h2>Services</h2>
           <ul>
-            <li>Lorem ipsum dolor sit amet</li>
-            <li>Lorem ipsum dolor sit amet</li>
-            <li>Lorem ipsum dolor sit amet</li>
-            <li>Lorem ipsum dolor sit amet</li>
+            <li>Lorem ipsum dolor sit</li>
+            <li>Lorem ipsum dolor sit</li>
+            <li>Lorem ipsum dolor sit</li>
+            <li>Lorem ipsum dolor sit </li>
           </ul>
         </section>
 
