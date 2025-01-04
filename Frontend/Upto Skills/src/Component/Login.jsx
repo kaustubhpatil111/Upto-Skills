@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios"; // import axios
 import "./Login.css";
 
 const testimonials = [
@@ -19,6 +20,9 @@ const testimonials = [
 const Login = ({ openRegisterModal, closeLoginModal }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState(""); // state for email
+  const [password, setPassword] = useState(""); // state for password
+  const [error, setError] = useState(""); // state for error messages
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -31,6 +35,22 @@ const Login = ({ openRegisterModal, closeLoginModal }) => {
   const togglePasswordVisibility = () => {
     setShowPassword((prevState) => !prevState);
   };
+
+  // Handle form submission
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+        const response = await axios.post("http://localhost:5000/api/auth/login", {
+            email,
+            password,
+        });
+        localStorage.setItem("token", response.data.token);
+        closeLoginModal();
+    } catch (err) {
+        setError(err.response?.data?.msg || "An error occurred");
+    }
+};
+
 
   return (
     <div className="login-container">
@@ -75,13 +95,16 @@ const Login = ({ openRegisterModal, closeLoginModal }) => {
           </p>
 
           {/* Login Form */}
-          <form className="login-form">
+          <form className="login-form" onSubmit={handleLogin}>
+            {error && <div className="error-message">{error}</div>} {/* Display error */}
             <div className="input-group">
               <input
                 type="email"
                 placeholder="Username or Email"
                 required
                 aria-label="Email or Username"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)} // Handle email input
               />
               <span className="input-icon">📧</span>
             </div>
@@ -92,6 +115,8 @@ const Login = ({ openRegisterModal, closeLoginModal }) => {
                 placeholder="Password"
                 required
                 aria-label="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)} // Handle password input
               />
               <button
                 type="button"

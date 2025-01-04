@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios"; // import axios
 import "./Register.css";
 
 const testimonials = [
@@ -20,8 +21,12 @@ const Register = ({ closeRegisterModal }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [email, setEmail] = useState(""); // state for email
+  const [username, setUsername] = useState(""); // state for username
+  const [password, setPassword] = useState(""); // state for password
+  const [confirmPassword, setConfirmPassword] = useState(""); // state for confirm password
+  const [error, setError] = useState(""); // state for error messages
 
-  // Automatically switch to the next testimonial every 5 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
@@ -37,6 +42,26 @@ const Register = ({ closeRegisterModal }) => {
   const toggleConfirmPasswordVisibility = () => {
     setShowConfirmPassword((prevState) => !prevState);
   };
+
+  // Handle form submission
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    if (password !== confirmPassword) {
+        setError("Passwords do not match");
+        return;
+    }
+    try {
+        const response = await axios.post("http://localhost:5000/api/auth/register", {
+            username,
+            email,
+            password,
+        });
+        localStorage.setItem("token", response.data.token);
+        closeRegisterModal();
+    } catch (err) {
+        setError(err.response?.data?.msg || "An error occurred");
+    }
+};
 
   return (
     <div className="login-container">
@@ -78,20 +103,25 @@ const Register = ({ closeRegisterModal }) => {
             Empower your experience, sign up for a free account today
           </p>
 
-          {/* Login Form */}
-          <form className="login-form">
+          {/* Registration Form */}
+          <form className="login-form" onSubmit={handleRegister}>
+            {error && <div className="error-message">{error}</div>} {/* Display error */}
             <div className="input-group">
               <input
                 type="email"
                 placeholder="Email"
                 required
-                aria-label="Email or Username"
+                aria-label="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)} // Handle email input
               />
               <input
-                type="username"
+                type="text"
                 placeholder="Username"
                 required
                 aria-label="Username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)} // Handle username input
               />
             </div>
 
@@ -101,12 +131,16 @@ const Register = ({ closeRegisterModal }) => {
                 placeholder="Password"
                 required
                 aria-label="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)} // Handle password input
               />
               <input
-                type={showPassword ? "text" : "password"}
+                type={showConfirmPassword ? "text" : "password"}
                 placeholder="Confirm Password"
                 required
-                aria-label="Password"
+                aria-label="Confirm Password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)} // Handle confirm password input
               />
               <button
                 type="button"
